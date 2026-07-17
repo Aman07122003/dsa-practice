@@ -1,680 +1,400 @@
-# 📘 Arrays - Complete Interview Handbook
+# 📘 Arrays - Pattern Based DSA Guide
 
-> A comprehensive guide to mastering Arrays for coding interviews. This handbook covers **theory, patterns, algorithms, complexity analysis, templates, interview questions, and problem roadmaps**.
+This README organizes array problems by **patterns** rather than difficulty. Most interview questions are variations of these patterns. Once you master a pattern, you can solve many related problems.
 
 ---
 
 # 📑 Table of Contents
 
-- Introduction
-- Time Complexity Cheat Sheet
-- Memory Representation
-- Arrays vs ArrayList vs LinkedList
-- Pattern Roadmap
-- Pattern Recognition Guide
-- Pattern Templates
-- Complete Pattern Library
-- Complexity Comparison
-- Common Interview Questions
-- Common Mistakes
-- Interview Roadmap
-- Must Solve Problems
-- Revision Checklist
+1. Traversal Pattern
+2. Frequency Counting Pattern
+3. Two Pointer Pattern
+4. Sliding Window Pattern
+5. Prefix Sum Pattern
+6. Binary Search Pattern
+7. Sorting Pattern
+8. Hashing Pattern
+9. Kadane's Pattern
+10. Cyclic Sort Pattern
+11. Matrix Pattern
+12. Interval Pattern
+13. Simulation Pattern
+14. Greedy Pattern
+15. Miscellaneous
 
 ---
 
-# 📌 What is an Array?
+# 1️⃣ Traversal Pattern
 
-An **Array** is a linear data structure that stores elements of the **same data type** in **contiguous memory locations**.
+### Idea
+Simply iterate through the array.
 
-Example
+### Questions
 
-```text
-Index   0   1   2   3   4
-Value  10  20  30  40  50
+- Find Largest Element
+- Find Smallest Element
+- Find Second Largest
+- Find Second Smallest
+- Check if Array is Sorted
+- Reverse an Array
+- Sum of Elements
+- Average of Array
+- Count Even/Odd Numbers
+- Find Maximum Difference
+- Print Alternate Elements
+- Count Positive/Negative Numbers
+
+Time Complexity:
+```
+O(n)
 ```
 
 ---
 
-# Characteristics
+# 2️⃣ Frequency Counting Pattern
 
-- Fixed Size
-- Stores homogeneous elements
-- Random Access
-- Contiguous Memory
-- Cache Friendly
-- Index starts from 0
+### Idea
 
----
+Count occurrences using HashMap or Array.
 
-# Memory Representation
+### Questions
 
-```text
-Address
+- Count Frequency
+- Find Duplicates
+- Find Unique Element
+- Most Frequent Element
+- Least Frequent Element
+- Count Distinct Elements
+- First Repeating Element
+- First Non-Repeating Element
+- Majority Element (HashMap)
+- Top K Frequent Elements
 
-1000 -> 10
-1004 -> 20
-1008 -> 30
-1012 -> 40
-1016 -> 50
+Time Complexity
+
 ```
-
-Each integer occupies 4 bytes.
-
-Address Formula
-
-```text
-Address = Base + (Index × SizeOfElement)
+O(n)
 ```
 
 ---
 
-# Advantages
+# 3️⃣ Two Pointer Pattern
 
-- O(1) Random Access
-- Cache Friendly
-- Easy Traversal
-- Low Memory Overhead
-- Simple Implementation
+### Idea
 
----
+Maintain two pointers from opposite ends or same direction.
 
-# Disadvantages
+### Questions
 
-- Fixed Size
-- Expensive Insertions
-- Expensive Deletions
-- Wasted Memory
-- Cannot Grow Dynamically
-
----
-
-# Time Complexity Cheat Sheet
-
-| Operation | Complexity |
-|------------|------------|
-| Access | O(1) |
-| Search | O(n) |
-| Update | O(1) |
-| Insert at End | O(1)* |
-| Insert at Beginning | O(n) |
-| Insert in Middle | O(n) |
-| Delete | O(n) |
-| Traversal | O(n) |
-
-\* Only if space is available.
-
----
-
-# Arrays vs ArrayList vs LinkedList
-
-| Feature | Array | ArrayList | LinkedList |
-|----------|--------|------------|------------|
-| Size | Fixed | Dynamic | Dynamic |
-| Random Access | O(1) | O(1) | O(n) |
-| Insert Beginning | O(n) | O(n) | O(1) |
-| Delete Beginning | O(n) | O(n) | O(1) |
-| Memory | Less | Moderate | More |
-| Cache Friendly | Yes | Yes | No |
-
----
-
-# Frequently Asked Interview Questions
-
-## Why is Array Access O(1)?
-
-Because the memory address is calculated directly.
-
-```text
-Address = Base + Index × Size
-```
-
-No traversal is required.
-
----
-
-## Why is Insertion O(n)?
-
-```text
-Before
-
-10 20 40 50
-
-Insert 30
-
-↓
-
-10 20 30 40 50
-```
-
-Elements after index must shift.
-
----
-
-## Why are Arrays Faster than Linked Lists?
-
-Arrays are stored in contiguous memory.
-
-CPU cache loads adjacent elements together.
-
-Linked Lists are scattered in memory.
-
----
-
-## Why can't Array Size Change?
-
-Memory is allocated during creation.
-
-Increasing the size would require allocating a new block and copying elements.
-
----
-
-# Pattern Roadmap
-
-```text
-Arrays
-
-│
-
-├── Traversal
-
-├── Frequency Counting
-
-├── Two Pointer
-
-├── Sliding Window
-
-├── Prefix Sum
-
-├── Hashing
-
-├── Binary Search
-
-├── Sorting
-
-├── Kadane
-
-├── Cyclic Sort
-
-├── Matrix
-
-├── Greedy
-
-└── Miscellaneous
-```
-
----
-
-# Pattern Recognition Guide
-
-| If the Question Mentions | Think About |
-|--------------------------|-------------|
-| Sorted Array | Binary Search / Two Pointer |
-| Pair Sum | HashMap / Two Pointer |
-| Window Size K | Sliding Window |
-| Consecutive | HashSet |
-| Frequency | HashMap |
-| Missing Number | Cyclic Sort |
-| Duplicate | HashMap / Cyclic Sort |
-| Maximum Sum | Kadane |
-| Subarray Sum | Prefix Sum |
-| Matrix | Matrix Traversal |
-| Merge | Sorting |
-
----
-
-# Pattern Templates
-
----
-
-# 1. Traversal
-
-### When to Use
-
-- Find maximum
-- Find minimum
-- Count elements
-- Sum
-- Reverse
-
-Template
-
-```java
-for(int i=0;i<arr.length;i++){
-
-}
-```
-
-Complexity
-
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
-
-Problems
-
-- Largest Element
-- Smallest Element
-- Second Largest
-- Reverse Array
-- Check Sorted
-- Count Even/Odd
-
----
-
-# 2. Frequency Counting
-
-### When to Use
-
-Whenever counting occurrences.
-
-Template
-
-```java
-HashMap<Integer,Integer> map=new HashMap<>();
-
-for(int num:arr){
-    map.put(num,map.getOrDefault(num,0)+1);
-}
-```
-
-Complexity
-
-| Time | Space |
-|------|-------|
-| O(n) | O(n) |
-
-Problems
-
-- Frequency Count
-- Duplicates
-- Majority Element
-- Top K Frequent
-- First Non-Repeating
-
----
-
-# 3. Two Pointer
-
-### Recognition
-
-Questions containing
-
-- Sorted
-- Pair
-- Reverse
-- Partition
-- Move
-
-Template
-
-```java
-int left=0;
-int right=arr.length-1;
-
-while(left<right){
-
-}
-```
-
-Complexity
-
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
-
-Problems
-
-- Two Sum
-- Reverse Array
+- Two Sum (Sorted Array)
 - Remove Duplicates
 - Move Zeroes
-- Merge Arrays
+- Reverse Array
 - Container With Most Water
+- Sort Colors
+- Merge Sorted Arrays
+- Squares of Sorted Array
+- Remove Element
+- Valid Palindrome
+
+Time Complexity
+
+```
+O(n)
+```
 
 ---
 
-# 4. Sliding Window
+# 4️⃣ Sliding Window Pattern
 
-Recognition
+### Idea
 
-- Window
-- Continuous
-- Fixed Size
-- Longest
-- Shortest
+Maintain a window of fixed/variable size.
 
-Fixed Window
+### Questions
 
-```java
-int sum=0;
+### Fixed Window
 
-for(int i=0;i<k;i++)
-    sum+=arr[i];
+- Maximum Sum Subarray of Size K
+- First Negative Number in Every Window
+- Count Distinct in Every Window
+- Maximum Average Subarray
 
-for(int i=k;i<arr.length;i++){
+### Variable Window
 
-    sum+=arr[i];
-    sum-=arr[i-k];
-}
-```
-
-Variable Window
-
-```java
-int left=0;
-
-for(int right=0;right<arr.length;right++){
-
-}
-```
-
-Problems
-
-- Maximum Sum K
-- Maximum Average
-- Longest Ones
+- Longest Substring Without Repeating Characters
+- Minimum Size Subarray Sum
 - Fruit Into Baskets
-- Minimum Window
+- Longest Ones
+- Maximum Consecutive Ones
+
+Time Complexity
+
+```
+O(n)
+```
 
 ---
 
-# 5. Prefix Sum
+# 5️⃣ Prefix Sum Pattern
 
-Recognition
+### Idea
 
-- Subarray Sum
-- Range Query
-- Continuous Sum
+Store cumulative sums.
 
-Template
+### Questions
 
-```java
-prefix[0]=arr[0];
-
-for(int i=1;i<n;i++){
-
-    prefix[i]=prefix[i-1]+arr[i];
-}
-```
-
-Problems
-
-- Subarray Sum Equals K
-- Count Subarrays
-- Pivot Index
+- Prefix Sum
 - Range Sum Query
+- Subarray Sum Equals K
+- Count Subarrays with Sum K
+- Longest Subarray with Sum K
+- Maximum Size Subarray Sum Equals K
+- Equal 0s and 1s
+- Pivot Index
+
+Time Complexity
+
+```
+O(n)
+```
 
 ---
 
-# 6. Binary Search
+# 6️⃣ Binary Search Pattern
 
-Recognition
+### Idea
 
-- Sorted
-- Search
-- Minimum
-- Peak
+Array must be sorted.
 
-Template
-
-```java
-while(low<=high){
-
-    int mid=low+(high-low)/2;
-
-}
-```
-
-Problems
+### Questions
 
 - Binary Search
-- Search Insert
-- Peak Element
-- Rotated Array
 - Lower Bound
 - Upper Bound
+- Search Insert Position
+- First Occurrence
+- Last Occurrence
+- Count Occurrences
+- Peak Element
+- Search in Rotated Array
+- Find Minimum in Rotated Array
+- Square Root
+- Aggressive Cows
+- Allocate Books
+- Koko Eating Bananas
+
+Time Complexity
+
+```
+O(log n)
+```
 
 ---
 
-# 7. Hashing
+# 7️⃣ Sorting Pattern
 
-Recognition
+### Idea
 
-- Pair
-- Frequency
-- Distinct
-- Duplicate
+Sort before solving.
 
-Template
+### Questions
 
-```java
-HashSet<Integer> set=new HashSet<>();
-HashMap<Integer,Integer> map=new HashMap<>();
+- Merge Intervals
+- Meeting Rooms
+- Chocolate Distribution
+- Largest Number
+- Minimum Difference
+- Merge Two Sorted Arrays
+- Sort Colors
+- H-Index
+
+Time Complexity
+
+```
+O(n log n)
 ```
 
-Problems
+---
+
+# 8️⃣ Hashing Pattern
+
+### Idea
+
+Use HashMap or HashSet.
+
+### Questions
 
 - Two Sum
 - Contains Duplicate
-- Longest Consecutive
-- Count Pair Difference
-- Count Pair Sum
+- Longest Consecutive Sequence
+- Count Pairs with Sum K
+- Count Pairs with Difference K
 - Missing Numbers
+- Happy Number
+- Intersection of Arrays
+- Union of Arrays
+- Group Anagrams
+
+Time Complexity
+
+```
+O(n)
+```
 
 ---
 
-# 8. Kadane's Algorithm
+# 9️⃣ Kadane's Pattern
 
-Recognition
+### Idea
 
-- Maximum Sum
-- Continuous Subarray
+Maximum/minimum subarray problems.
 
-Template
-
-```java
-current=Math.max(arr[i],current+arr[i]);
-max=Math.max(max,current);
-```
-
-Problems
+### Questions
 
 - Maximum Subarray
-- Maximum Circular Sum
-- Stock Buy Sell
+- Maximum Circular Subarray
+- Maximum Product Subarray
+- Best Time to Buy and Sell Stock
+- Maximum Absolute Sum
+
+Time Complexity
+
+```
+O(n)
+```
 
 ---
 
-# 9. Cyclic Sort
+# 🔟 Cyclic Sort Pattern
 
-Recognition
+### Idea
 
-Numbers are in range
+Numbers lie in range **1...N**.
 
-```text
-1...N
-```
-
-Template
-
-```java
-while(i<n){
-
-    int correct=arr[i]-1;
-
-}
-```
-
-Problems
+### Questions
 
 - Missing Number
-- Missing Numbers
-- Duplicate Number
-- Set Mismatch
+- Find All Missing Numbers
+- Find Duplicate Number
+- Find All Duplicates
 - First Missing Positive
+- Set Mismatch
+- Corrupt Pair
+
+Time Complexity
+
+```
+O(n)
+```
+
+Space
+
+```
+O(1)
+```
 
 ---
 
-# 10. Matrix
+# 1️⃣1️⃣ Matrix Pattern
 
-Problems
+### Questions
 
 - Rotate Matrix
 - Spiral Matrix
 - Set Matrix Zeroes
-- Search Matrix
-- Transpose
+- Search 2D Matrix
+- Transpose Matrix
+- Diagonal Traversal
 - Flood Fill
+- Number of Islands
 
 ---
 
-# Complexity Comparison
+# 1️⃣2️⃣ Interval Pattern
 
-| Pattern | Time | Space |
-|----------|------|--------|
-| Traversal | O(n) | O(1) |
-| Frequency | O(n) | O(n) |
-| Two Pointer | O(n) | O(1) |
-| Sliding Window | O(n) | O(1) |
-| Prefix Sum | O(n) | O(n) |
-| Binary Search | O(log n) | O(1) |
-| Hashing | O(n) | O(n) |
-| Kadane | O(n) | O(1) |
-| Cyclic Sort | O(n) | O(1) |
+### Questions
+
+- Merge Intervals
+- Insert Interval
+- Non-overlapping Intervals
+- Meeting Rooms
+- Employee Free Time
 
 ---
 
-# Common Interview Mistakes
+# 1️⃣3️⃣ Simulation Pattern
 
-## Binary Search
+### Questions
 
-❌
-
-```java
-mid=(low+high)/2;
-```
-
-✅
-
-```java
-mid=low+(high-low)/2;
-```
+- Rotate Array
+- Spiral Matrix
+- Game of Life
+- Robot Return to Origin
+- Pascal Triangle
 
 ---
 
-## HashMap
+# 1️⃣4️⃣ Greedy Pattern
 
-❌
+### Questions
 
-```java
-containsValue()
-```
-
-When checking keys.
-
-Use
-
-```java
-containsKey()
-```
+- Jump Game
+- Gas Station
+- Candy
+- Best Time to Buy and Sell Stock
+- Assign Cookies
 
 ---
 
-## Prefix Sum
+# 1️⃣5️⃣ Miscellaneous
 
-Always initialize
+### XOR Pattern
 
-```java
-map.put(0,1);
-```
-
-when solving Subarray Sum Equals K.
+- Single Number
+- Missing Number
+- Two Unique Numbers
 
 ---
 
-## Sliding Window
+### Math Pattern
 
-Always remove the left element before expanding.
-
----
-
-## Two Pointer
-
-Update pointers correctly.
-
-Otherwise, infinite loops may occur.
+- Plus One
+- Product Except Self
+- Rotate Array
+- Pow(x,n)
 
 ---
 
-# Decision Tree
+### Monotonic Stack
 
-```text
-Question
-
-│
-
-├── Sorted?
-
-│      │
-
-│      ├── Search → Binary Search
-
-│      └── Pair → Two Pointer
-
-│
-
-├── Frequency?
-
-│      │
-
-│      └── HashMap
-
-│
-
-├── Continuous?
-
-│      │
-
-│      ├── Fixed → Sliding Window
-
-│      └── Sum → Prefix Sum
-
-│
-
-├── Missing Number?
-
-│      │
-
-│      ├── 1...N → Cyclic Sort
-
-│      └── Others → HashSet
-
-│
-
-└── Maximum Sum?
-
-       │
-
-       └── Kadane
-```
+- Next Greater Element
+- Daily Temperatures
+- Largest Rectangle
+- Trapping Rain Water
 
 ---
 
-# ⭐ Must Solve Problems
+### Monotonic Queue
+
+- Sliding Window Maximum
+
+---
+
+# ⭐ Most Asked Array Interview Questions
 
 ## Easy
 
 - Largest Element
 - Second Largest
-- Reverse Array
+- Remove Duplicates
 - Move Zeroes
 - Two Sum
-- Remove Duplicates
 - Contains Duplicate
-- Missing Number
-- Majority Element
+- Best Time to Buy and Sell Stock
 - Merge Sorted Arrays
+- Majority Element
+- Missing Number
 
 ---
 
@@ -682,14 +402,14 @@ Question
 
 - Product Except Self
 - Maximum Subarray
-- Rotate Array
 - Longest Consecutive Sequence
-- Count Pair Difference
-- Count Pair Sum
+- Rotate Array
 - Subarray Sum Equals K
 - Longest Subarray Sum K
-- Merge Intervals
 - Sort Colors
+- Merge Intervals
+- Top K Frequent Elements
+- Find Duplicate Number
 
 ---
 
@@ -697,57 +417,29 @@ Question
 
 - Trapping Rain Water
 - First Missing Positive
-- Sliding Window Maximum
 - Median of Two Sorted Arrays
-- Largest Rectangle
+- Sliding Window Maximum
 - Maximum Rectangle
+- Largest Rectangle in Histogram
 
 ---
 
-# Revision Checklist
+# 📌 Master These Patterns
 
-- ✅ Array Basics
-- ✅ Complexity Analysis
-- ✅ Traversal
-- ✅ Frequency Counting
-- ✅ Two Pointer
-- ✅ Sliding Window
-- ✅ Prefix Sum
-- ✅ Binary Search
-- ✅ Hashing
-- ✅ Kadane
-- ✅ Cyclic Sort
-- ✅ Matrix
-- ✅ Common Mistakes
-- ✅ Pattern Recognition
-- ✅ Top Interview Questions
+✅ Traversal
 
----
+✅ Two Pointers
 
-## 📚 Recommended Learning Order
+✅ Sliding Window
 
-```text
-Traversal
-      ↓
-Frequency Counting
-      ↓
-Hashing
-      ↓
-Two Pointer
-      ↓
-Sliding Window
-      ↓
-Prefix Sum
-      ↓
-Binary Search
-      ↓
-Kadane
-      ↓
-Cyclic Sort
-      ↓
-Matrix
-      ↓
-Advanced Problems
-```
+✅ Prefix Sum
 
-> 💡 **Pro Tip:** In interviews, don't memorize solutions. Learn to identify the underlying pattern. Most array problems are variations of the same 8–10 core techniques.
+✅ Hashing
+
+✅ Binary Search
+
+✅ Kadane
+
+✅ Cyclic Sort
+
+These 8 patterns cover **80-90% of array interview questions** asked in coding interviews.
