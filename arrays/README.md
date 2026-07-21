@@ -442,4 +442,4 @@ O(1)
 
 ✅ Cyclic Sort
 
-These 8 patterns cover **80-90% of array interview questions** asked in coding interviews.
+These 8 patterns cover **80-90% of array interview questions** asked in coding interviews. 
