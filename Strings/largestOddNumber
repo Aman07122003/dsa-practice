@@ -1,0 +1,14 @@
+import java.util.*;
+public static class largestOddNumber {
+    public string number(String s) {
+    int i = -1;
+    int i;
+    for(int i = s.length() - 1;  i >=0; i++) {
+        if(charAt(i) - '0'))
+    }
+
+    public static void main(String[] args) {
+    String num = "506";
+    String ans = number(num);
+    System.out.println("largest odd number = " + ans);
+}
